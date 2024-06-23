@@ -11,18 +11,14 @@ export default function Inbox() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(address);
-    axios
-      .get(
-        config.BACKEND_URL +
-          "notify/inbox?address=" +
-          "0x003023B7AA237b22D62254C118774B5FC8Be425575b24553c1C6742a5E52aD8e"
-      )
-      .then((res) => {
-        setInbox(res.data);
-        setLoading(false);
-      });
-  }, [address]);
+    console.log(address)
+    axios.get(config.BACKEND_URL + "notify/inbox?address=" + address).then((res) => {
+      setInbox(res.data);
+      setLoading(false);
+    }
+    );
+  },[address]);
+
 
   return (
     <div className="flex h-[40rem] max-h-[40rem] justify-start flex-col w-1/2 gap-6 mt-2 overflow-y-auto">
